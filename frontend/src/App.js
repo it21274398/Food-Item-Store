@@ -4,7 +4,6 @@ import LoginScreen from "./components/LoginScreen";
 import Registerscreen from "./components/RegisterScreen";
 import ItemCartScreen from "./components/ItemCartScreen";
 import FavouriteScreen from "./components/FavoriteScreen";
-
 function App() {
   return (
     <div>
