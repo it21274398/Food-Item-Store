@@ -11,7 +11,6 @@ function SendNewMemberDetails() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
-  const navigate = useNavigate;
   const sendData = (e) => {
     e.preventDefault();
     axios
@@ -28,7 +27,6 @@ function SendNewMemberDetails() {
       )
       .then((result) => {
         console.log(result);
-        navigate("/");
       })
       .catch((err) => console.log(err));
   };
