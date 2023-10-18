@@ -4,7 +4,7 @@ const bodyParfser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-require("dotenv").config();
+
 const PORT = process.env.PORT || 8070;
 
 app.use(cors());
@@ -20,7 +20,7 @@ mongoose.connect(URL, {
 });
 
 const connection = mongoose.connection;
-connection.once("open", () => {
+connection.onece("open", () => {
   console.log(`MongoDB connected successfully on ${URL}`);
 });
 
