@@ -2,36 +2,37 @@ import React from "react";
 import "../styles/RegisterScreen.css";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const RegisterScreen = () => {
+function SendNewMemberDetails() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
-
-  function sendData(e) {
-    e.preventDefault(); // stops page from refreshing when form is submitted
-
-    const newMember = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phoneNumber: phoneNumber,
-      password: password,
-    };
-    console.log(newMember); // change this part to send data to server or API using Axios or fetch
-
+  const navigate = useNavigate;
+  const sendData = (e) => {
+    e.preventDefault();
     axios
-      .post("http://localhost:8070/food/addFood", newMember)
-      .then(() => {
-        alert("Ticket added successfully");
+      .post(
+        "mongodb+srv://linukalolitha:ATlinuka2002@fooditemcart.lldaazf.mongodb.net/FoodStore",
+        {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          password,
+          conformPassword,
+        }
+      )
+      .then((result) => {
+        console.log(result);
+        navigate("/");
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div class="container">
       <div class="form-container sign-in-container">
@@ -122,6 +123,5 @@ const RegisterScreen = () => {
       </div>
     </div>
   );
-};
-
-export default RegisterScreen;
+}
+export default SendNewMemberDetails;
